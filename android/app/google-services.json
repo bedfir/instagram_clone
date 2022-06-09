@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "838859221946",
+    "project_id": "instaclone-f7a64",
+    "storage_bucket": "instaclone-f7a64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838859221946:android:5155a0f33a1807ed378b83",
+        "android_client_info": {
+          "package_name": "com.dinya.marlonne"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "838859221946-n7g89edhdqth457rh0p60e7j09mr38na.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANzmYfBDoAVgqX-Xra9_2VtJBI4sTTEP0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "838859221946-n7g89edhdqth457rh0p60e7j09mr38na.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
