@@ -3,6 +3,7 @@ import 'package:marlonne/responsive/mobile_screen_layout.dart';
 import 'package:marlonne/responsive/responsive_layout_screen.dart';
 import 'package:marlonne/responsive/web_screen_layout.dart';
 import 'package:marlonne/screens/login_screen.dart';
+import 'package:marlonne/screens/signup_screen.dart';
 import 'package:marlonne/utils/colors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -30,7 +31,7 @@ class HomePage extends StatelessWidget {
       //   mobileScreenLayout: MobileScreenLayout(),
       //   webScreenLayout: WebScreenLayout(),
       // ),
-      home: LoginScreen(),
+      home: SignupScreen(),
     );
   }
 }

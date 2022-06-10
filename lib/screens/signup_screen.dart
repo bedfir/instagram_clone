@@ -3,21 +3,26 @@ import 'package:flutter_svg/svg.dart';
 import 'package:marlonne/utils/colors.dart';
 import 'package:marlonne/widgets/text_field_input.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SiguUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SiguUpScreenState extends State<SignupScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _bioController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _bioController.dispose();
+    _usernameController.dispose();
+
     super.dispose();
   }
 
@@ -38,6 +43,31 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 64,
               ),
               const SizedBox(height: 64),
+              Stack(
+                children: [
+                  const CircleAvatar(
+                    radius: 64,
+                    backgroundImage: NetworkImage(
+                      'http://t2.gstatic.com/licensed-image?q=tbn:ANd9GcTBjJ4LH2PkvfNlkSELG2WvGKz0bku0Fnl7cy2hwK4iR8yn_gWRs2F8RsbqAhfuHIlt',
+                    ),
+                  ),
+                  Positioned(
+                    bottom: -10,
+                    left: 80,
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.add_a_photo),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 24),
+              TextFieldInput(
+                hintText: 'Enter your username',
+                textInputType: TextInputType.text,
+                textEditingController: _usernameController,
+              ),
+              const SizedBox(height: 24),
               TextFieldInput(
                 hintText: 'Enter your email',
                 textInputType: TextInputType.emailAddress,
@@ -49,6 +79,12 @@ class _LoginScreenState extends State<LoginScreen> {
                 textInputType: TextInputType.visiblePassword,
                 textEditingController: _passwordController,
                 isPass: true,
+              ),
+              const SizedBox(height: 24),
+              TextFieldInput(
+                hintText: 'Enter your bio',
+                textInputType: TextInputType.text,
+                textEditingController: _bioController,
               ),
               const SizedBox(height: 24),
               InkWell(
@@ -64,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     color: blueColor,
                   ),
-                  child: const Text('Log In'),
+                  child: const Text('Sign Up'),
                 ),
               ),
               const SizedBox(height: 12),
