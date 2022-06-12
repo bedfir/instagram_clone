@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:marlonne/resources/auth_methods.dart';
 import 'package:marlonne/utils/colors.dart';
+import 'package:marlonne/utils/utils.dart';
 import 'package:marlonne/widgets/text_field_input.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -13,12 +15,32 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  bool _isLoading = false;
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  void loginUser() async {
+    setState(() {
+      _isLoading = true;
+    });
+    String res = await AuthMetods().loginUser(
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+    if (res == "success") {
+      // showSnackBar(res, context);
+    } else {
+      // ignore: use_build_context_synchronously
+      showSnackBar(res, context);
+    }
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override
@@ -64,7 +86,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     color: blueColor,
                   ),
-                  child: const Text('Log In'),
+                  child: _isLoading
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: primaryColor,
+                          ),
+                        )
+                      : const Text('Log In'),
                 ),
               ),
               const SizedBox(height: 12),
@@ -77,7 +105,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: const Text('Don\'t have an account ?'),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: loginUser,
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: const Text(
