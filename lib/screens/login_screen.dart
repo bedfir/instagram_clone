@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marlonne/resources/auth_methods.dart';
+import 'package:marlonne/responsive/mobile_screen_layout.dart';
+import 'package:marlonne/responsive/responsive_layout_screen.dart';
+import 'package:marlonne/responsive/web_screen_layout.dart';
+import 'package:marlonne/screens/signup_screen.dart';
 import 'package:marlonne/utils/colors.dart';
 import 'package:marlonne/utils/utils.dart';
 import 'package:marlonne/widgets/text_field_input.dart';
@@ -34,6 +38,15 @@ class _LoginScreenState extends State<LoginScreen> {
       password: _passwordController.text,
     );
     if (res == "success") {
+      // ignore: use_build_context_synchronously
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => const ResponsiveLayout(
+            mobileScreenLayout: MobileScreenLayout(),
+            webScreenLayout: WebScreenLayout(),
+          ),
+        ),
+      );
     } else {
       // ignore: use_build_context_synchronously
       showSnackBar(res, context);
@@ -41,6 +54,14 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       _isLoading = false;
     });
+  }
+
+  void navigateToSignup() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => SignupScreen(),
+      ),
+    );
   }
 
   @override
@@ -106,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: const Text('Don\'t have an account ?'),
                   ),
                   GestureDetector(
-                    onTap: loginUser,
+                    onTap: navigateToSignup,
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       child: const Text(
