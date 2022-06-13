@@ -7,7 +7,7 @@ class MobileScreenLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('MobileScreenLayout'),
+        child: Text('Mobile Screen Layout'),
       ),
     );
   }

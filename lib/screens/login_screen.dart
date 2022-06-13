@@ -28,12 +28,12 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       _isLoading = true;
     });
+
     String res = await AuthMetods().loginUser(
       email: _emailController.text,
       password: _passwordController.text,
     );
     if (res == "success") {
-      // showSnackBar(res, context);
     } else {
       // ignore: use_build_context_synchronously
       showSnackBar(res, context);
@@ -74,6 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 24),
               InkWell(
+                onTap: loginUser,
                 child: Container(
                   width: double.infinity,
                   alignment: Alignment.center,
